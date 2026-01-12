@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+:root {
+  /* +Philia Hub Brand Colors */
+  --primary: #d17251;        /* sunset-red */
+  --accent: #e5ac6a;         /* warm-gold */
+  --muted: #979d8a;          /* sage */
+  --info: #7b8682;           /* blue-gray */
+  --foreground: #555950;
+  --background: #f9f7f0;
+  
+  /* UI Colors */
+  --card: #ffffff;
+  --card-foreground: #555950;
+  --border: #e5e5e5;
+  --input: #ffffff;
+  --ring: #d17251;
+  
+  /* Semantic Colors */
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --success: #16a34a;
+  --success-foreground: #ffffff;
+}
+
+.dark {
+  --primary: #e58a6b;        /* lighter sunset-red */
+  --accent: #f0bf84;         /* lighter warm-gold */
+  --muted: #a8ae9a;          /* lighter sage */
+  --info: #8d9792;           /* lighter blue-gray */
+  --foreground: #e5e5e0;
+  --background: #1a1a18;
+  
+  --card: #242422;
+  --card-foreground: #e5e5e0;
+  --border: #3a3a38;
+  --input: #242422;
+  --ring: #e58a6b;
+  
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --success: #22c55e;
+  --success-foreground: #ffffff;
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-info: var(--info);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+}
+
+* {
+  @apply border-border;
+}
+
+body {
+  @apply bg-background text-foreground;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+}
+
+/* Reduced motion support for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Skip links for keyboard navigation (accessibility) */
+.skip-link {
+  @apply absolute left-[-9999px] top-auto w-1 h-1 overflow-hidden;
+  @apply focus:fixed focus:top-4 focus:left-4 focus:w-auto focus:h-auto focus:overflow-visible;
+  @apply focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white;
+  @apply focus:rounded-md focus:outline-none focus:ring-2 focus:ring-ring;
+}
+
+/* Focus visible states for accessibility */
+:focus-visible {
+  @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+}
+
