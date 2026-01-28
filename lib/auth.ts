@@ -132,6 +132,9 @@ export const authOptions: NextAuthOptions = {
       console.log(`User signed in: ${user.email}`);
     },
   },
+  secret: process.env.NEXTAUTH_SECRET || (process.env.NODE_ENV === 'development' 
+    ? 'development-secret-change-in-production' 
+    : 'temporary-production-secret-please-set-nexauth-secret'),
   debug: process.env.NODE_ENV === 'development',
 };
 

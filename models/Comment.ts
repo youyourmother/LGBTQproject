@@ -23,7 +23,6 @@ const CommentSchema = new Schema<IComment>(
       type: Schema.Types.ObjectId,
       ref: 'User',
       required: true,
-      index: true,
     },
     parentId: {
       type: Schema.Types.ObjectId,

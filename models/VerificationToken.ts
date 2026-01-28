@@ -31,7 +31,6 @@ const VerificationTokenSchema = new Schema<IVerificationToken>(
     expires: {
       type: Date,
       required: true,
-      index: true,
     },
   },
   {

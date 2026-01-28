@@ -55,7 +55,6 @@ const EventSchema = new Schema<IEvent>(
       unique: true,
       lowercase: true,
       trim: true,
-      index: true,
     },
     organizerType: {
       type: String,
@@ -183,7 +182,6 @@ const EventSchema = new Schema<IEvent>(
 );
 
 // Indexes for search and filtering
-EventSchema.index({ slug: 1 }, { unique: true });
 EventSchema.index({ 'location.geo': '2dsphere' });
 EventSchema.index({ startsAt: 1, status: 1 });
 EventSchema.index({ status: 1, visibility: 1, startsAt: 1 });
