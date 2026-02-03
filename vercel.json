@@ -3,29 +3,6 @@
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "framework": "nextjs",
-  "regions": ["iad1"],
-  "env": {
-    "MONGODB_URI": {
-      "type": "secret"
-    },
-    "NEXTAUTH_SECRET": {
-      "type": "secret"
-    },
-    "RESEND_API_KEY": {
-      "type": "secret"
-    },
-    "GOOGLE_CLIENT_ID": {
-      "type": "secret"
-    },
-    "GOOGLE_CLIENT_SECRET": {
-      "type": "secret"
-    },
-    "TURNSTILE_SECRET_KEY": {
-      "type": "secret"
-    },
-    "SENTRY_DSN": {
-      "type": "secret"
-    }
-  }
+  "regions": ["iad1"]
 }
 
