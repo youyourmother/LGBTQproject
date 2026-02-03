@@ -20,8 +20,6 @@ const VerificationTokenSchema = new Schema<IVerificationToken>(
     token: {
       type: String,
       required: true,
-      unique: true,
-      index: true,
     },
     type: {
       type: String,
@@ -38,7 +36,8 @@ const VerificationTokenSchema = new Schema<IVerificationToken>(
   }
 );
 
-// Index for cleanup of expired tokens
+// Indexes (single definition to avoid duplicate index warning)
+VerificationTokenSchema.index({ token: 1 }, { unique: true });
 VerificationTokenSchema.index({ expires: 1 }, { expireAfterSeconds: 0 });
 
 const VerificationToken: Model<IVerificationToken> = 

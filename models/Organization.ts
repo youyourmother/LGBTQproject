@@ -26,7 +26,6 @@ const OrganizationSchema = new Schema<IOrganization>(
     slug: {
       type: String,
       required: true,
-      unique: true,
       lowercase: true,
       trim: true,
     },
@@ -75,7 +74,8 @@ const OrganizationSchema = new Schema<IOrganization>(
   }
 );
 
-// Indexes
+// Indexes (single definition for slug to avoid duplicate index warning)
+OrganizationSchema.index({ slug: 1 }, { unique: true });
 OrganizationSchema.index({ verified: 1 });
 OrganizationSchema.index({ locationCenter: '2dsphere' });
 

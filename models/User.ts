@@ -32,7 +32,6 @@ const UserSchema = new Schema<IUser>(
     email: {
       type: String,
       required: true,
-      unique: true,
       lowercase: true,
       trim: true,
     },
@@ -76,7 +75,8 @@ const UserSchema = new Schema<IUser>(
   }
 );
 
-// Indexes
+// Indexes (single definition to avoid duplicate index warning)
+UserSchema.index({ email: 1 }, { unique: true });
 UserSchema.index({ role: 1 });
 
 const User: Model<IUser> = mongoose.models.User || mongoose.model<IUser>('User', UserSchema);

@@ -52,7 +52,6 @@ const EventSchema = new Schema<IEvent>(
     slug: {
       type: String,
       required: true,
-      unique: true,
       lowercase: true,
       trim: true,
     },
@@ -181,7 +180,8 @@ const EventSchema = new Schema<IEvent>(
   }
 );
 
-// Indexes for search and filtering
+// Indexes for search and filtering (single definition for slug to avoid duplicate index warning)
+EventSchema.index({ slug: 1 }, { unique: true });
 EventSchema.index({ 'location.geo': '2dsphere' });
 EventSchema.index({ startsAt: 1, status: 1 });
 EventSchema.index({ status: 1, visibility: 1, startsAt: 1 });
